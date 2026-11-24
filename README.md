@@ -10,11 +10,10 @@ The project compares linear regression with a deep neural network implemented in
 
 ## Main Notebook
 
-**[Open the Project Notebook in Google Colab](notebooks/DS330_P1_Team[Rahaf_Amal].ipynb)**
+**[Open the Project Notebook in Google Colab](https://colab.research.google.com/github/AmalKhairalla/OPL-Insights/blob/main/notebooks/DS330_P1_Team%5BRahaf_Amal%5D.ipynb)**
 
 The notebook contains data preparation, exploratory data analysis, preprocessing, baseline models, hyperparameter experiments, learning curves, model selection, and final test evaluation.
 
-*Note: Update the notebook filename in this link if the final submitted filename differs.*
 
 ## Dataset
 
