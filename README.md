@@ -3,11 +3,6 @@
 These files extract the working FPR Single-ply deadlift baseline into reusable modules.
 They **do not** create a new dataset split or evaluate the test set.
 
-## Upload to GitHub
-
-Copy the `src/` folder and `requirements.txt` into the **root** of `OPL-Insights`.
-Leave `data/FPR_SinglePly_fixed_split.csv.gz` in `data/`.
-Keep the original baseline Colab notebook unchanged. Both experiment notebooks should import from `src/`.
 
 ## Colab quick start
 
