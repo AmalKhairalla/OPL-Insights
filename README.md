@@ -166,7 +166,7 @@ The DS330 project includes:
 
 The dataset was obtained from [OpenPowerlifting](https://www.openpowerlifting.org/).
 
-AI assistance, including ChatGPT, was used to support code development, debugging, experiment organization, and documentation. The team is responsible for reviewing, executing, understanding, and explaining the implementation and results.
+AI tools, including **OpenAI ChatGPT (GPT-6)** and **the free version of Anthropic Claude**, were used to assist with code development, debugging, experiment organization, and documentation. All generated content was reviewed and tested by the team, who remain responsible for understanding and explaining the implementation and results.
 
 ## Limitations
 
