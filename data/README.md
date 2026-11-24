@@ -1,39 +1,28 @@
-# Dataset
+## Dataset
 
-## OpenPowerlifting Dataset
+### Original Dataset — OpenPowerlifting
 
-This project uses the OpenPowerlifting dataset.
+This project uses the [OpenPowerlifting dataset](https://data.openpowerlifting.org/), a publicly available dataset containing real-world powerlifting competition results.
 
-### Data Source
+The original dataset contains approximately **4.07 million records and 42 columns**, including athlete information (age, sex, and bodyweight), competition details (federation, equipment, event, and date), and performance measurements (squat, bench press, deadlift, and total weight lifted).
 
-The complete dataset is available from
-the official OpenPowerlifting website:
+Due to its large size and variety of competition categories, the dataset was explored and filtered to select a suitable subset for our regression task.
 
-[Download OpenPowerlifting Dataset](https://www.openpowerlifting.org/)
+### Selected Dataset — FPR Single-ply
 
-### Dataset Information
+Following exploratory analysis, we selected records from the **Powerlifting Federation of Russia (FPR)**, restricted to Single-ply equipment and SBD (Squat, Bench Press, Deadlift) competitions.
 
-- Source: OpenPowerlifting
-- Format: CSV
-- Data Type: Tabular Data
-- Task: Regression
-- Target Variable: TotalKg
-## Final Dataset Selection — FPR Single-ply
+The final dataset contains **81,957 valid competition records**, with the following variables:
 
-Following exploratory analysis of the OpenPowerlifting dataset, we selected competition records from the Powerlifting Federation of Russia (FPR), specifically the Single-ply equipment category and SBD events.
+- **Target:** `Best3DeadliftKg`
+- **Input features:** `Age`, `Sex`, `BodyweightKg`, `Best3SquatKg`, `Best3BenchKg`
 
-**Selected dataset:**
-- Federation: FPR
-- Equipment: Single-ply
-- Event: SBD
-- Valid records: 81,957
-- Input features: BodyweightKg, Best3SquatKg, Best3BenchKg
-- Target: Best3DeadliftKg
+The objective is to predict an athlete's best successful deadlift based on their physical characteristics and squat and bench press performance.
 
-The dataset was selected because it provides a sufficiently large number of valid observations for training and evaluating deep neural networks.
+### Data Preprocessing
 
-Preliminary comparisons showed that polynomial regression reduced validation MSE by 7.91% compared with linear regression, while a basic PyTorch neural network achieved a 10.98% reduction.
+The selected dataset was divided into approximately **70% training, 15% validation, and 15% testing**, using group-based splitting by recorded athlete name to reduce data leakage from repeated competition records.
 
-These exploratory results suggest that nonlinear modeling may be beneficial for predicting deadlift performance.
+Missing age values were handled using median imputation, `Sex` was one-hot encoded, and numerical features were standardized using training-set statistics only. The target variable was also standardized for neural network training, with predictions converted back to kilograms for evaluation.
 
-The selected cleaned dataset was saved separately for reuse in the main DS330 project. The formal neural-network training and hyperparameter experiments will be conducted in a new notebook.
+The finalized dataset and fixed split were saved for consistent and reproducible experiments.
