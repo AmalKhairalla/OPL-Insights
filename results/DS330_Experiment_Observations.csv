@@ -16,25 +16,3 @@ A12,Optimizer,AdamW (lr = 0.01),324.95,6,16,early_stopping,"AdamW reached best v
 A13,Loss function,L1 loss,322.44,24,34,early_stopping,Training with L1 achieved a slightly worse validation MSE than training with MSE. All runs were still evaluated using original-scale MSE.
 A14,Loss function,Huber loss; delta = 0.5,321.65,62,63,early_stopping,"Huber delta 0.5 achieved validation MSE close to baseline, with its best checkpoint at epoch 62. Delta was applied to the standardized target."
 A15,Loss function,Huber loss; delta = 2.0,321.28,53,63,early_stopping,"Huber delta 2.0 was the strongest alternative loss configuration among A13–A15, though still slightly worse than baseline MSE training."
-
-
-BASE_LINEAR,Baseline,Linear regression,358.80,,,No epochs,Reference model: validation MSE 358.80 kg².
-BASE_NN_EARLY_STOPPING,Baseline,"SGD; lr 0.01; batch 64; hidden (64,64,64); MSE",320.41,41,51,early_stopping,"Baseline neural network achieved validation MSE of 320.41 kg² and serves as the reference for Part B."
-
-B01,Batch size,batch_size = 16,320.11,22,32,early_stopping,"Batch size 16 achieved the best validation MSE among batch-size experiments (320.11 kg²), slightly outperforming the baseline. It reached its best checkpoint early at epoch 22."
-B02,Batch size,batch_size = 32,320.42,22,32,early_stopping,"Batch size 32 produced almost identical validation performance to the baseline, with a best MSE of 320.42 kg². It converged to its best checkpoint at epoch 22."
-B03,Batch size,batch_size = 128,320.21,90,100,early_stopping,"Batch size 128 achieved validation MSE slightly better than the baseline. However, its best checkpoint occurred late at epoch 90, indicating slower convergence."
-B04,Batch size,batch_size = 256,321.88,95,100,early_stopping,"Batch size 256 produced worse validation performance than the baseline. Its best checkpoint occurred at epoch 95, suggesting that larger batches required more training to reach their best performance."
-B05,Batch size,batch_size = 512,323.66,95,100,maximum_epochs,"Batch size 512 resulted in higher validation MSE than smaller batch sizes and did not trigger early stopping before reaching the 100-epoch limit."
-B06,Batch size,batch_size = 1024,325.56,97,100,maximum_epochs,"Batch size 1024 further increased validation MSE. The model continued training until the maximum epoch limit without triggering early stopping."
-B07,Batch size,batch_size = 2048,329.33,99,100,maximum_epochs,"Batch size 2048 achieved the worst validation MSE among batch-size experiments. The result suggests that excessively large batches reduced optimization effectiveness under the fixed training budget."
-
-B08,Depth,hidden = (64,),321.86,50,60,early_stopping,"A single hidden layer achieved worse validation performance than the baseline three-layer network, suggesting that reducing network depth limited its predictive capacity."
-B09,Depth,hidden = (64,64),320.34,39,49,early_stopping,"Two hidden layers achieved validation MSE close to the baseline, with a slightly better result. This indicates that a relatively shallow network was sufficient to capture much of the underlying relationship."
-B10,Depth,hidden = (64,64,64,64),319.77,32,42,early_stopping,"Four hidden layers achieved the best validation MSE among all Part B experiments (319.77 kg²), outperforming the baseline. This suggests that additional depth improved the model's ability to capture complex patterns."
-B11,Depth,hidden = (64,64,64,64,64,64),321.60,21,31,early_stopping,"Increasing the network depth to six hidden layers worsened validation MSE compared with four layers. The additional depth did not provide further generalization benefits."
-
-B12,Width,hidden = (16,16,16),324.11,27,37,early_stopping,"Using 16 neurons per hidden layer resulted in worse validation performance than the baseline, suggesting insufficient network capacity."
-B13,Width,hidden = (32,32,32),322.03,29,39,early_stopping,"Increasing the width to 32 neurons per layer improved validation performance compared with 16 neurons, but remained worse than the baseline."
-B14,Width,hidden = (128,128,128),321.13,17,27,early_stopping,"Increasing the width to 128 neurons per layer further improved validation MSE compared with narrower networks. However, it did not outperform the baseline."
-B15,Width,hidden = (256,256,256),319.83,21,26,early_stopping,"Using 256 neurons per hidden layer achieved the best validation MSE among width experiments (319.83 kg²), slightly outperforming the baseline. The larger network provided greater capacity, although its performance was marginally worse than the four-layer configuration."
